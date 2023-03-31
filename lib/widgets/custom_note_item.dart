@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+
 class CustomNoteItem extends StatelessWidget {
   CustomNoteItem(
       {required this.i,
@@ -22,11 +23,24 @@ class CustomNoteItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (i>6){i=0;}
+    if (i > 6) {
+      i = 0;
+    }
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          // showMaterialModalBottomSheet(
+          //   context: context,
+          //   builder: (context) => SingleChildScrollView(
+          //     controller: ModalScrollController.of(context),
+          //     child: Container(
+          //       child: Text('hello'),
+          //     ),
+          //   ),
+          // );
+
+        },
         child: Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20), color: color[i]),
@@ -63,7 +77,9 @@ class CustomNoteItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
+                  IconButton(onPressed: () {
+
+                  }, icon: Icon(Icons.delete)),
                   Padding(
                     padding: const EdgeInsets.only(right: 20.0),
                     child: Text('27/1/2024'),

@@ -8,12 +8,10 @@ import '../widgets/custom_note_item.dart';
 
 class HomePage extends StatelessWidget {
   static String id = 'HomePage';
-  int indx = 0;
+var NoteList =[];
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -31,39 +29,39 @@ class HomePage extends StatelessWidget {
           //       clr1: Colors.white,
           //       clr2: Colors.white38)),
           // ),
+
           Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20), color: Colors.black12),
+                borderRadius: BorderRadius.circular(0), color: Colors.black12),
             child: Padding(
               padding: const EdgeInsets.only(left: 20, right: 20.0),
               child: IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+
             ),
           )
         ],
       ),
-      body: Stack(alignment: AlignmentDirectional.bottomEnd, children: [
-        BlocBuilder<HomeCubit,HomeState>(
-          builder:(context , state){ return ListView.builder(
-              itemCount: indx,
+      body: BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
+        return Stack(alignment: AlignmentDirectional.bottomEnd,
+            children: [
+          ListView.builder(
+              itemCount:BlocProvider.of<HomeCubit>(context).index,
               itemBuilder: (context, index) {
-                return CustomNoteItem(
-                  i: indx,
+                return  CustomNoteItem(
+                  i: BlocProvider.of<HomeCubit>(context).indx,
                   title: 'njn',
                   text: 'k,kr',
                   date: '22/04/2020',
                 );
-              });}
 
-        ),
-        Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: FloatingActionButton(onPressed: () {
-            indx = indx + 1;
-            print(indx);
+              }
+              ),
+          BlocProvider.of<HomeCubit>(context).add_button(),
 
-          }),
-        )
-      ]),
+        ]);
+      }),
     );
   }
+
+
 }
