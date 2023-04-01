@@ -6,13 +6,14 @@ import 'package:note_app/widgets/textField_Custom.dart';
 
 import '../widgets/custom_note_item.dart';
 
-class HomePage extends StatelessWidget {
+class NotesView extends StatelessWidget {
   static String id = 'HomePage';
 var NoteList =[];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton:BlocProvider.of<HomeCubit>(context).add_button(),
       appBar: AppBar(
         title: Text(
           'Notes',
@@ -56,7 +57,7 @@ var NoteList =[];
 
               }
               ),
-          BlocProvider.of<HomeCubit>(context).add_button(),
+        //  BlocProvider.of<HomeCubit>(context).add_button(),
 
         ]);
       }),

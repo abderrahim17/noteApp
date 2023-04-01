@@ -13,7 +13,7 @@ List list=[];
    add_button() {
     return
        FloatingActionButton(
-      backgroundColor: Colors.black12,
+      backgroundColor: Colors.grey,
           onPressed: () {
         indx = indx + 1;
         index = index + 1;
@@ -24,7 +24,7 @@ List list=[];
         emit(HomeAdding());
       //  list.add(value)
       },
-      child: const Icon(Icons.add,color: Colors.white,));
+      child: const Icon(Icons.add,color: Colors.white));
 
 
   }

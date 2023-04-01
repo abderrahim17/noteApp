@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_app/Screens/home_page.dart';
+import 'package:note_app/views/notes_view.dart';
+
 
 import 'cubits/home_page_cubit/home_cubit.dart';
 
@@ -28,9 +29,9 @@ class NoteApp extends StatelessWidget {
         theme:ThemeData.dark() ,
 
    routes: {
-       HomePage.id: (context) =>  HomePage(),
+     NotesView.id: (context) =>  NotesView(),
    },
-        initialRoute: HomePage.id,
+        initialRoute: NotesView.id,
       ),
     );
 
