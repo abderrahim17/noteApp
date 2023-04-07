@@ -1,24 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class CustomNoteItem extends StatelessWidget {
-  CustomNoteItem(
-      {required this.i,
-      required this.title,
-      required this.text,
-      required this.date});
+  CustomNoteItem({
+    required this.i,
+    required this.title,
+    required this.text,
+    required this.date,
+    required this.color,
+  });
 
   String title, text, date;
 
-  List<Color> color = [
-    Colors.green,
-    Colors.lightBlueAccent,
-    Colors.cyanAccent,
-    Colors.greenAccent,
-    Colors.lightBlue,
-    Colors.lightGreen
-  ];
+  List<Color> color = [];
   int i;
 
   @override
@@ -39,7 +33,6 @@ class CustomNoteItem extends StatelessWidget {
           //     ),
           //   ),
           // );
-
         },
         child: Container(
           decoration: BoxDecoration(
@@ -55,7 +48,7 @@ class CustomNoteItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'data',
+                        title,
                         style: TextStyle(fontSize: 40),
                       ),
                       SizedBox(
@@ -63,7 +56,7 @@ class CustomNoteItem extends StatelessWidget {
                       ),
                       Expanded(
                         child: Text(
-                          'data rRadius.circular(20),color: Colors.black12),height: MediaQuery.of(context).size.height/4,',
+                          text,
                           style: TextStyle(fontSize: 15),
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
@@ -77,9 +70,7 @@ class CustomNoteItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  IconButton(onPressed: () {
-
-                  }, icon: Icon(Icons.delete)),
+                  IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
                   Padding(
                     padding: const EdgeInsets.only(right: 20.0),
                     child: Text('27/1/2024'),
