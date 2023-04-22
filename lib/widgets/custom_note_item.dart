@@ -44,7 +44,7 @@ class CustomNoteItem extends StatelessWidget {
                         title,
                         style: TextStyle(fontSize: 40),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Expanded(

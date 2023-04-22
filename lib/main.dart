@@ -4,7 +4,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:note_app/models/note_model.dart';
 import 'package:note_app/simple_bloc_observer.dart';
 import 'package:note_app/views/note_edit_view.dart';
-import 'package:note_app/views/notes_view_bottom_sheet.dart';
+import 'package:note_app/views/notes_view.dart';
 
 
 import 'costatnts/Constants.dart';

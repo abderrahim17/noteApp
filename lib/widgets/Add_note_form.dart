@@ -8,16 +8,19 @@ import 'package:note_app/widgets/textField_Custom.dart';
 import '../cubits/home_page_cubit/addNote_cubit.dart';
 
 class AddNoteForm extends StatefulWidget {
-   AddNoteForm({
+
+
+  AddNoteForm({
+  //required this.isloading,
   super.key,
   });
-
-
+//bool isloading;
   @override
   State<AddNoteForm> createState() => _AddNoteFormState();
 }
 
 String? text, title;
+
 GlobalKey<FormState> FormKey =GlobalKey();
 AutovalidateMode Autovalidate =AutovalidateMode.disabled;
 class _AddNoteFormState extends State<AddNoteForm> {
@@ -45,18 +48,32 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 text = data;
               }),
           SizedBox(height: 15),
-          ElevatedButton(
 
-              onPressed: () {
-if (FormKey.currentState!.validate()){
-  FormKey.currentState!.save();
-  NoteModel noteModel=NoteModel(title: title!, date: DateTime.now().toString(), subtitle: text!, color: Colors.grey.value );
-  BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
-}else{Autovalidate=AutovalidateMode.always;}
-                Navigator.pop(context);
-                //BlocProvider.of<HomeCubit>(context).add_button();
-              },
-              child: const Text('Done'))
+
+
+          BlocBuilder  <AddNoteCubit,AddNoteState>(
+            builder: (context,state) {
+              return ElevatedButton(
+                  onPressed: () {
+                    if (FormKey.currentState!.validate()) {
+                      FormKey.currentState!.save();
+                      NoteModel noteModel = NoteModel(title: title!,
+                          date: DateTime.now().toString(),
+                          subtitle: text!,
+                          color: Colors.grey.value);
+                      BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+                    } else {
+                      Autovalidate = AutovalidateMode.always;
+                    }
+                    Navigator.pop(context);
+                    //BlocProvider.of<HomeCubit>(context).add_button();
+                  },
+                  child:
+              true
+                      ?
+                  SizedBox(height:20 ,width: 20, child: const CircularProgressIndicator(color: Colors.black54,)): const Text('Done'))
+              ;
+            } )
         ],
       ),
     );
