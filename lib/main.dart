@@ -37,10 +37,10 @@ class NoteApp extends StatelessWidget {
       theme:ThemeData.dark() ,
 
    routes: {
-     NotesViewBottomSheet.id: (context) =>  NotesViewBottomSheet(),
+     NotesView.id: (context) =>  NotesView(),
      NoteEditView.id: (context) =>  NoteEditView(),
    },
-      initialRoute: NotesViewBottomSheet.id,
+      initialRoute: NotesView.id,
     );
 
   }

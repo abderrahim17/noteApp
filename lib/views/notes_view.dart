@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/cubits/home_page_cubit/addNote_cubit.dart';
+import 'package:note_app/cubits/read_note_cubit.dart';
 
 import 'package:note_app/views/note_vew_bottom_sheet.dart';
 
 import '../widgets/Add_note_form.dart';
 import '../widgets/custom_note_item.dart';
 
-class NotesViewBottomSheet extends StatelessWidget {
+class NotesView extends StatelessWidget {
   static String id = 'HomePage';
 
   late List<Widget> noteList = [];
@@ -21,7 +22,7 @@ class NotesViewBottomSheet extends StatelessWidget {
     Colors.lightGreen
   ];
 
-  NotesViewBottomSheet
+  NotesView
 
   ({super.key});
 
@@ -52,24 +53,29 @@ class NotesViewBottomSheet extends StatelessWidget {
             ],
           ),
         ),
-        body: ListView.builder(itemBuilder: (context, index)
-    {
-    //   itemCount:
-    //   BlocProvider
-    //       .of<AddNoteCubit>(context)
-    //       .index
-    // ,
-    // itemBuilder: (context, index) {
-    // noteList.add(CustomNoteItem(
-    // color: color,
-    // i: BlocProvider.of<AddNoteCubit>(context).indx,
-    // title: title!,
-    // text: text!,
-    // date: '22/04/2020',
-    // ));
-    // print(BlocProvider.of<AddNoteCubit>(context).indexo);
-    // return noteList[index];
-    })
+        body: BlocProvider(
+          create: (context) => ReadNoteCubit(),
+          child: ListView.builder(
+              itemBuilder: (context, index) {
+                
+                BlocProvider.of<ReadNoteCubit>(context).FetchNote(note)
+                //   itemCount:
+                //   BlocProvider
+                //       .of<AddNoteCubit>(context)
+                //       .index
+                // ,
+                // itemBuilder: (context, index) {
+                // noteList.add(CustomNoteItem(
+                // color: color,
+                // i: BlocProvider.of<AddNoteCubit>(context).indx,
+                // title: title!,
+                // text: text!,
+                // date: '22/04/2020',
+                // ));
+                // print(BlocProvider.of<AddNoteCubit>(context).indexo);
+                // return noteList[index];
+              }),
+        )
 
 
     );
@@ -78,4 +84,4 @@ class NotesViewBottomSheet extends StatelessWidget {
 // BlocBuilder<HomeCubit, HomeState> NotesBody() {
 //   return
 // }
-  }
+}
