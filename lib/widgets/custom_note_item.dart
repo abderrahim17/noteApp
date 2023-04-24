@@ -1,26 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:note_app/models/note_model.dart';
 import 'package:note_app/views/note_edit_view.dart';
 
 class CustomNoteItem extends StatelessWidget {
   CustomNoteItem({
-    required this.i,
-    required this.title,
-    required this.text,
-    required this.date,
-    required this.color,
-  });
-
-  String title, text, date;
-
-  List<Color> color = [];
-  int i;
+    // required this.i,
+    // required this.title,
+    // required this.text,
+    // required this.date,
+    // required this.color,
+   required this.note});
+final NoteModel note;
+  // String title, text, date;
+  //
+  // List<Color> color = [];
+  // int i;
 
   @override
   Widget build(BuildContext context) {
-    if (i > 6) {
-      i = 0;
-    }
+    // if (i > 6) {
+    //   i = 0;
+    // }
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: GestureDetector(
@@ -29,7 +30,8 @@ class CustomNoteItem extends StatelessWidget {
         },
         child: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20), color: color[i]),
+              borderRadius: BorderRadius.circular(20), color:Color(note.color),
+          ),
           height: MediaQuery.of(context).size.height / 4,
           child: Row(
             children: [
@@ -41,7 +43,7 @@ class CustomNoteItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        title,
+                        note.title,
                         style: TextStyle(fontSize: 40),
                       ),
                       const SizedBox(
@@ -49,7 +51,7 @@ class CustomNoteItem extends StatelessWidget {
                       ),
                       Expanded(
                         child: Text(
-                          text,
+                          note.subtitle,
                           style: TextStyle(fontSize: 15),
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
@@ -66,7 +68,7 @@ class CustomNoteItem extends StatelessWidget {
                   IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
                   Padding(
                     padding: const EdgeInsets.only(right: 20.0),
-                    child: Text('27/1/2024'),
+                    child: Text(note.date),
                   ),
                 ],
               )

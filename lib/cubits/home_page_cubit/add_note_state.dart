@@ -1,4 +1,4 @@
-part of 'addNote_cubit.dart';
+part of 'add_note_cubit.dart';
 
 @immutable
 abstract class AddNoteState {}

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../cubits/home_page_cubit/addNote_cubit.dart';
+import '../cubits/home_page_cubit/add_note_cubit.dart';
 import '../widgets/textField_Custom.dart';
 
 class NoteEditView extends StatelessWidget {

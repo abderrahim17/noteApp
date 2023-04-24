@@ -7,8 +7,8 @@ import 'package:note_app/views/note_edit_view.dart';
 import 'package:note_app/views/notes_view.dart';
 
 
-import 'costatnts/Constants.dart';
-import 'cubits/home_page_cubit/addNote_cubit.dart';
+import 'constants/constants.dart';
+import 'cubits/home_page_cubit/add_note_cubit.dart';
 
 
 
@@ -17,9 +17,10 @@ void main() async{
   Bloc.observer=SimpleBlocObserver();
   /// we have to choose the hive comming from package (hive flutter) not from package (hive)
   await Hive.initFlutter();
+
   /// i have to tell hive to work with note model using hive.register
   Hive.registerAdapter(NoteModelAdapter());
-  Hive.openBox<NoteModel>(kNotesBox);
+  await Hive.openBox<NoteModel>(kNotesBox);
 
   runApp(NoteApp());
 }

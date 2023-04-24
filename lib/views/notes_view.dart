@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_app/cubits/home_page_cubit/addNote_cubit.dart';
+import 'package:note_app/cubits/home_page_cubit/add_note_cubit.dart';
 import 'package:note_app/cubits/read_note_cubit.dart';
 
 import 'package:note_app/views/note_vew_bottom_sheet.dart';
 
 import '../widgets/Add_note_form.dart';
 import '../widgets/custom_note_item.dart';
+import 'notes_list_view.dart';
 
 class NotesView extends StatelessWidget {
   static String id = 'HomePage';
@@ -28,53 +29,38 @@ class NotesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        floatingActionButton: NoteViewBottomSheet(),
-        appBar: AppBar(
-          title: Row(
-            children: [
-              const Text(
-                'Notes',
-                style: TextStyle(
-                  fontSize: 30,
+    return BlocProvider(
+        create: (context) => ReadNoteCubit(),
+        child: Scaffold(
+          floatingActionButton: NoteViewBottomSheet(),
+          appBar: AppBar(
+            title: Row(
+              children: [
+                const Text(
+                  'Notes',
+                  style: TextStyle(
+                    fontSize: 30,
+                  ),
                 ),
-              ),
-              Spacer(),
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(0),
-                    color: Colors.black12),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20.0),
-                  child: IconButton(
-                      onPressed: () {}, icon: const Icon(Icons.search)),
-                ),
-              )
-            ],
+                Spacer(),
+                Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(0),
+                      color: Colors.black12),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20.0),
+                    child: IconButton(
+                        onPressed: () {}, icon: const Icon(Icons.search)),
+                  ),
+                )
+              ],
+            ),
           ),
-        ),
-        body: BlocProvider(
-          create: (context) => ReadNoteCubit(),
-          child: ListView.builder(
-              itemBuilder: (context, index) {
-                
-                BlocProvider.of<ReadNoteCubit>(context).FetchNote(note)
-                //   itemCount:
-                //   BlocProvider
-                //       .of<AddNoteCubit>(context)
-                //       .index
-                // ,
-                // itemBuilder: (context, index) {
-                // noteList.add(CustomNoteItem(
-                // color: color,
-                // i: BlocProvider.of<AddNoteCubit>(context).indx,
-                // title: title!,
-                // text: text!,
-                // date: '22/04/2020',
-                // ));
-                // print(BlocProvider.of<AddNoteCubit>(context).indexo);
-                // return noteList[index];
-              }),
+
+
+          body:NotesListView()
+
+
         )
 
 
@@ -85,3 +71,4 @@ class NotesView extends StatelessWidget {
 //   return
 // }
 }
+
