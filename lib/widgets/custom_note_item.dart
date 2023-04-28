@@ -29,8 +29,8 @@ final NoteModel note;
       padding: const EdgeInsets.all(20.0),
       child: GestureDetector(
         onTap: () {
-      Navigator.pushNamed(context,NoteEditView.id);
-        },
+      Navigator.push(context, MaterialPageRoute(builder: (context) {return NoteEditView(note: note,);}
+      ) );},
         child: Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20), color:Color(note.color),

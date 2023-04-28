@@ -42,7 +42,7 @@ class NoteApp extends StatelessWidget {
 
    routes: {
        NotesView.id: (context) =>  NotesView(),
-       NoteEditView.id: (context) =>  NoteEditView(),
+       //NoteEditView.id: (context) =>  NoteEditView(),
    },
         initialRoute: NotesView.id,
       ),
