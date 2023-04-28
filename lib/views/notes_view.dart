@@ -38,7 +38,7 @@ class NotesView extends StatelessWidget {
               Spacer(),
               Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(0),
+                    borderRadius: BorderRadius.circular(20),
                     color: Colors.black12),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20.0),

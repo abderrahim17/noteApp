@@ -28,7 +28,7 @@ class NoteViewBottomSheet extends StatelessWidget {
 
                         }
                         if (state is AddNoteFailure){
-                          debugPrint('fefz ${state.exeption }');
+                          debugPrint('failed ${state.exeption }');
 
                         }
 

@@ -20,7 +20,7 @@ class ReadNoteCubit extends Cubit<ReadNoteState> {
     note = noteBox.values.toList();
 
     emit(ReadNoteSuccess());
-   print('salam');
+
 //    debugPrint(note.toString());
   }
 }
