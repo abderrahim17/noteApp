@@ -5,10 +5,8 @@ import 'package:note_app/models/note_model.dart';
 import 'package:note_app/simple_bloc_observer.dart';
 import 'package:note_app/views/note_edit_view.dart';
 import 'package:note_app/views/notes_view.dart';
-
-
 import 'constants/constants.dart';
-import 'cubits/home_page_cubit/add_note_cubit.dart';
+import 'cubits/read_note_cubit.dart';
 
 
 
@@ -33,15 +31,21 @@ class NoteApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
 
-    return MaterialApp(
-    debugShowCheckedModeBanner: false,
-      theme:ThemeData.dark() ,
+    return BlocProvider(
+
+
+    create: (context) => ReadNoteCubit(),
+      child: MaterialApp(
+
+      debugShowCheckedModeBanner: false,
+        theme:ThemeData.dark() ,
 
    routes: {
-     NotesView.id: (context) =>  NotesView(),
-     NoteEditView.id: (context) =>  NoteEditView(),
+       NotesView.id: (context) =>  NotesView(),
+       NoteEditView.id: (context) =>  NoteEditView(),
    },
-      initialRoute: NotesView.id,
+        initialRoute: NotesView.id,
+      ),
     );
 
   }

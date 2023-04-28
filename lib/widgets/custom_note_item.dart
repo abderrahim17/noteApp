@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:note_app/cubits/read_note_cubit.dart';
 import 'package:note_app/models/note_model.dart';
 import 'package:note_app/views/note_edit_view.dart';
 
@@ -65,7 +68,12 @@ final NoteModel note;
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
+                  IconButton(onPressed: (){
+
+                  note.delete();
+                  BlocProvider.of<ReadNoteCubit>(context).FetchNote();
+
+                  }, icon: Icon(Icons.delete)),
                   Padding(
                     padding: const EdgeInsets.only(right: 20.0),
                     child: Text(note.date),

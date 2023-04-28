@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-
 import '../cubits/home_page_cubit/add_note_cubit.dart';
+import '../cubits/read_note_cubit.dart';
 import '../widgets/Add_note_form.dart';
 
 class NoteViewBottomSheet extends StatelessWidget {
@@ -25,10 +24,11 @@ class NoteViewBottomSheet extends StatelessWidget {
                       listener:(context,state){
                         if (state is AddNoteSuccess){
                           Navigator.pop(context);
+                         BlocProvider.of<ReadNoteCubit>(context).FetchNote();
 
                         }
                         if (state is AddNoteFailure){
-                          debugPrint('failled ${state.exeption }');
+                          debugPrint('fefz ${state.exeption }');
 
                         }
 

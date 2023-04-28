@@ -15,11 +15,13 @@ class NotesListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return  BlocBuilder<ReadNoteCubit, ReadNoteState>(
         builder: (context, state) {
-          BlocProvider.of<ReadNoteCubit>(context).FetchNote();
+          //BlocProvider.of<ReadNoteCubit>(context).FetchNote();
+
           List<NoteModel>? notes = BlocProvider.of<ReadNoteCubit>(context).note?? [];
       return ListView.builder(
         itemCount: notes.length,
         itemBuilder: (context, index) {
+
           //debugPrint(notes[0].title);
         return CustomNoteItem(note: notes[index]);
 
