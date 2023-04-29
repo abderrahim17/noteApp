@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_app/models/note_model.dart';
+import 'package:note_app/widgets/colors_item.dart';
+
 import 'package:note_app/widgets/textField_Custom.dart';
-import 'package:intl/intl.dart';
-import '../cubits/home_page_cubit/add_note_cubit.dart';
+
+import 'package:note_app/widgets/validation_button.dart';
+
 
 class AddNoteForm extends StatefulWidget {
   AddNoteForm({
@@ -19,6 +20,7 @@ class AddNoteForm extends StatefulWidget {
 String? text, title;
 
 GlobalKey<FormState> FormKey = GlobalKey();
+/// AutoValidateMode is to show the red sign that you have to write something on the field
 AutovalidateMode Autovalidate = AutovalidateMode.disabled;
 
 class _AddNoteFormState extends State<AddNoteForm> {
@@ -35,7 +37,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
               title = data;
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           CustomTextField(
@@ -43,36 +45,13 @@ class _AddNoteFormState extends State<AddNoteForm> {
               hint: 'Contain',
               onsaved: (data) {
                 text = data;
-              }),
-          SizedBox(height: 15),
-          BlocBuilder<AddNoteCubit, AddNoteState>(builder: (context, state) {
-            return ElevatedButton(
-                onPressed: () {
-                  if (FormKey.currentState!.validate()) {
-                    FormKey.currentState!.save();
-                    NoteModel noteModel = NoteModel(
-                        title: title!,
-                        date:DateFormat('dd-MM-yyyy').format(DateTime.now()),
-                        subtitle: text!,
-                        color: Colors.grey.value);
-                    BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
-                  } else {
-                    Autovalidate = AutovalidateMode.always;
-                  }
-                  // Navigator.pop(context);
-                  //BlocProvider.of<HomeCubit>(context).add_button();
-                },
-                child: state is AddNoteLoadding
-                    ? SizedBox(
-                        height: 20,
-                        width: 20,
-                        child: const CircularProgressIndicator(
-                          color: Colors.black54,
-                        ))
-                    : const Text('Done'));
-          })
+              },  ),
+          const SizedBox(height: 15),
+          const ColorsListView(),
+          const ValidationButton()
         ],
       ),
     );
   }
 }
+

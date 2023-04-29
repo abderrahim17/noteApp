@@ -10,14 +10,7 @@ class NotesView extends StatelessWidget {
 
   late List<Widget> noteList = [];
 
-  List<Color> color = [
-    Colors.green,
-    Colors.lightBlueAccent,
-    Colors.cyanAccent,
-    Colors.greenAccent,
-    Colors.lightBlue,
-    Colors.lightGreen
-  ];
+
 
   NotesView({super.key});
 
