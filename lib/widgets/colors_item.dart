@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_app/cubits/home_page_cubit/add_note_cubit.dart';
 
 class ColorsItem extends StatelessWidget {
   const ColorsItem({Key? key, required this.isPicked, required this.color }) : super(key: key);
@@ -55,8 +57,9 @@ class _ColorsListViewState extends State<ColorsListView> {
           child: GestureDetector(
             onTap: (){
               currentindex =index ;
-              debugPrint('$currentindex');
-              debugPrint('$index');
+              BlocProvider.of<AddNoteCubit>(context).color=color[index];
+              // debugPrint('$currentindex');
+              // debugPrint('$index');
 setState(() {});
             },
             child: ColorsItem(isPicked: currentindex ==index ,

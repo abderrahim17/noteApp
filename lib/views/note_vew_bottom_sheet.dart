@@ -18,9 +18,13 @@ class NoteViewBottomSheet extends StatelessWidget {
           showModalBottomSheet(
               context: context,
               builder: (context) {
-                return BlocProvider(
-                  create: (context) => AddNoteCubit(),
-                  child: BlocConsumer<AddNoteCubit,AddNoteState>(
+                return
+
+                  // BlocProvider(
+                  // create: (context) => AddNoteCubit(),
+                  // child:
+
+                  BlocConsumer<AddNoteCubit,AddNoteState>(
                       listener:(context,state){
                         if (state is AddNoteSuccess){
                           Navigator.pop(context);
@@ -37,8 +41,8 @@ class NoteViewBottomSheet extends StatelessWidget {
                         ///absorb pointer is a function to bloc the user to interact with the screen
                         return AbsorbPointer(
                             absorbing: state is AddNoteLoadding ? true :false ,
-                            child: SingleChildScrollView(child: AddNoteForm()));}),
-                );
+                            child: SingleChildScrollView(child: AddNoteForm()));});
+               // );
               });
         },
         child: const Icon(Icons.add, color: Colors.white));

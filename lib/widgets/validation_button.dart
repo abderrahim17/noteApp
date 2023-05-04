@@ -25,6 +25,7 @@ class ValidationButton extends StatelessWidget {
                   subtitle: text!,
                   color: Colors.grey.value);
               BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+
             } else {
               Autovalidate = AutovalidateMode.always;
             }

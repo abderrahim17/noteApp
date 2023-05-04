@@ -13,17 +13,23 @@ part 'add_note_state.dart';
 
 class AddNoteCubit extends Cubit<AddNoteState> {
   AddNoteCubit() : super(AddNoteInitial());
+  final controller =ScrollController();
+  Color color =Colors.green;
   addNote(NoteModel note)async{
     ///to create then add to the box created
     emit(AddNoteLoadding());
-
+note.color = color.value ;
    try{ var noteBox = Hive.box<NoteModel >(kNotesBox);
 
    await noteBox.add(note);
-   emit(AddNoteSuccess());}
+
+   emit(AddNoteSuccess());
+
+   }
    catch(e){
      emit(AddNoteFailure(exeption: e.toString()));
    }
+    controller.jumpTo(controller.position.maxScrollExtent);
   }
 
 

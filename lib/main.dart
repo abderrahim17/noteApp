@@ -6,6 +6,7 @@ import 'package:note_app/simple_bloc_observer.dart';
 import 'package:note_app/views/note_edit_view.dart';
 import 'package:note_app/views/notes_view.dart';
 import 'constants/constants.dart';
+import 'cubits/home_page_cubit/add_note_cubit.dart';
 import 'cubits/read_note_cubit.dart';
 
 
@@ -31,10 +32,16 @@ class NoteApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
 
-    return BlocProvider(
+    return MultiBlocProvider(providers: [
+
+        BlocProvider(create: ( context) =>ReadNoteCubit()  , ),
+        BlocProvider(create: ( context) =>AddNoteCubit()  , ),
 
 
-    create: (context) => ReadNoteCubit(),
+
+    ],
+
+
       child: MaterialApp(
 
       debugShowCheckedModeBanner: false,

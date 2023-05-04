@@ -43,7 +43,7 @@ class NotesView extends StatelessWidget {
           ),
         ),
         body:
-        NotesListView());
+          NotesListView());
   }
 
 // BlocBuilder<HomeCubit, HomeState> NotesBody() {
