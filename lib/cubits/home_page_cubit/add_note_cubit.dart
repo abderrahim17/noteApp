@@ -22,14 +22,13 @@ note.color = color.value ;
    try{ var noteBox = Hive.box<NoteModel >(kNotesBox);
 
    await noteBox.add(note);
-
+   controller.jumpTo(controller.position.maxScrollExtent);
    emit(AddNoteSuccess());
 
    }
    catch(e){
      emit(AddNoteFailure(exeption: e.toString()));
    }
-    controller.jumpTo(controller.position.maxScrollExtent);
   }
 
 

@@ -21,10 +21,11 @@ class NotesListView extends StatelessWidget {
           BlocProvider.of<ReadNoteCubit>(context).FetchNote();}
           List<NoteModel>? notes = BlocProvider.of<ReadNoteCubit>(context).note?? [];
       return ListView.builder(
+        reverse: true,
 controller: BlocProvider.of<AddNoteCubit>(context).controller,
         itemCount: notes.length,
         itemBuilder: (context, index) {
-        // if(state is AddNoteSuccess) {controller.jumpTo(controller.position.maxScrollExtent,);}
+       //  if(state is AddNoteSuccess) {var controller;controller.jumpTo(controller.position.maxScrollExtent,);}
           //debugPrint(notes[0].title);
         return CustomNoteItem(note: notes[index]);
 
