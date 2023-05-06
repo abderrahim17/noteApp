@@ -17,7 +17,6 @@ class NotesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
         floatingActionButton: NoteViewBottomSheet(),
         appBar: AppBar(
           title: Row(
